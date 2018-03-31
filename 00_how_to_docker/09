@@ -1,0 +1,1 @@
+docker pull debian; docker run --rm -it --name debian debian; 
