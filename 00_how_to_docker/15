@@ -1,0 +1,3 @@
+docker pull phpmyadmin/phpmyadmin; 
+
+# for check ---> open "http://$(docker-machine ip Char):8081"

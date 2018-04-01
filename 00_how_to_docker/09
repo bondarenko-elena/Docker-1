@@ -1,1 +1,6 @@
-docker pull debian; docker run --rm -it --name debian debian; 
+docker pull debian; docker run --rm -it --name debian debian /bin/bash; 
+
+# apt-get update
+# apt-get upgrade
+# apt-get install vim
+# apt-get install gcc
