@@ -1,0 +1,1 @@
+docker service scale marine-squad=20
