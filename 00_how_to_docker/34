@@ -1,0 +1,1 @@
+docker-machine stop Aiur; docker-machine rm Aiur

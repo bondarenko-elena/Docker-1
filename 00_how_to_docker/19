@@ -1,7 +1,4 @@
 docker pull python:2-slim; docker run --rm -it --name=Abathur -v $HOME:/root -p=3000:3000 python:2-slim;
-
-# apt-get update
-# apt-get upgrade
-# apt-get install python-pip
-
 pip install Flask;
+export FLASK_APP=index.py
+python -m flask run --host="0.0.0.0" --port=3000
