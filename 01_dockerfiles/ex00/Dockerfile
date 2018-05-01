@@ -4,3 +4,4 @@ RUN apk add --no-cache vim
 CMD ["sh", "-c", "vim ."]
 
 # docker build --tag=vim .
+# docker run -it --rm vim
