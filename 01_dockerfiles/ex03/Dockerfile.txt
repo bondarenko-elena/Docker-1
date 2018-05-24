@@ -1,16 +1,18 @@
 FROM debian
 
-RUN apt-get update && \
-	apt-get install --no-install-recommends build-essential ca-certificates \
-	git golang-go sqlite libsqlite3-dev openssl openssh-server -y && \
-	mkdir -p /root/go/src/github.com/gogits && \
-	cd /root/go/src/github.com/gogits && \
-	git clone --recurse-submodules -b develop https://github.com/gogits/gogs && \
-	cd gogs && \
-	go build -v -tags 'sqlite'
+RUN apt-get -y update \
+	&& apt-get -y install \
+	git \
+	golang \
+	sqlite3
 
-ENV USER="root"
-WORKDIR /root/go/src/github.com/gogits/gogs
-EXPOSE 3000 22
-USER root
-CMD ["./gogs", "web"]
+ENV USER=root GOPATH=/
+
+WORKDIR src/github.com/gogits
+RUN git clone --depth=1 -b develop https://github.com/gogits/gogs \
+	&& go get -u -tags sqlite github.com/gogits/gogs
+
+WORKDIR gogs
+RUN go build -tags sqlite
+EXPOSE 3000
+ENTRYPOINT ["./gogs", "web"]
