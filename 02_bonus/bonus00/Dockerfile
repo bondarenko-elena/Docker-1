@@ -1,20 +1,20 @@
 FROM node
 MAINTAINER Olena Bondarenko <olbondar@student.unit.ua>
 
-WORKDIR /var/www/app
+RUN apt-get -qqy update && \
+	apt-get -qqy install \
+	nodejs \
+	build-essential \
+	curl
 
-RUN apt-get update && apt-get install -y apt-transport-https
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | \
+	bash && \
+	apt-get -qqy purge curl
 
-COPY app /var/www/app
+WORKDIR /project
+EXPOSE 8080
 
-RUN yarn
+CMD ["bash"]
 
-EXPOSE 3000
-
-CMD ["node","index.js"]
-
-# docker build --tag=yarn .
-# docker run -it --rm yarn
+# docker build --tag=yarn-env .
+# docker run -it --rm yarn-env

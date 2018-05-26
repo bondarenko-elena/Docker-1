@@ -4,8 +4,7 @@ MAINTAINER Olena Bondarenko <olbondar@student.unit.ua>
 EXPOSE 9987/udp 30033 10011
 
 RUN apt-get update \
-	&& apt-get install wget bzip2 wget ca-certificates -y \
-	&& adduser --disabled-password --gecos "" teamspeak
+	&& apt-get install wget bzip2 wget ca-certificates -y
 
 WORKDIR /home/teamspeak
 
