@@ -1,1 +1,2 @@
-docker pull alpine; docker run --rm -it --name alpine alpine /bin/bash
+docker pull alpine;
+docker run --rm -it --name alpine alpine /bin/ash

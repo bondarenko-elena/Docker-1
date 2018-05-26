@@ -1,4 +1,4 @@
-docker pull python:2-slim; docker run --rm -it --name=Abathur -v $HOME:/root -p=3000:3000 python:2-slim;
-pip install Flask;
-export FLASK_APP=index.py
-python -m flask run --host="0.0.0.0" --port=3000
+docker pull python:2-slim;
+docker run -dt --name Abathur -v ~/Abathur:/root -p 3000:3000 python:2-slim;
+docker exec Abathur pip install flask;
+docker exec --env FLASK_APP=/root/hello.py Abathur flask run --port 3000 --host 0.0.0.0

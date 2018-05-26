@@ -14,9 +14,7 @@ RUN wget http://dl.4players.de/ts/releases/3.0.11.1/teamspeak3-server_linux-amd6
 
 WORKDIR teamspeak3-server_linux-amd64
 
-CMD ["sh", "ts3server_minimal_runscript.sh", "inifile=ts3server.ini"]
+CMD ["sh", "ts3server_minimal_runscript.sh"]
 
 # docker build --tag=teamspeak .
-# docker run -it --rm teamspeak
-# ps aux | grep ts3server --- to ensure if ts3server is launched
-# docker-machine ip Char --- you should connect to the IP of virtual machine (for example Char)
+# docker run -it --rm -p=9987:9987/udp  -p=10011:10011 -p=30033:30033 teamspeak

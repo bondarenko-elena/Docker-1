@@ -1,3 +1,1 @@
 docker pull phpmyadmin/phpmyadmin; docker run -d --name roach-warden --restart=always -p=8081:80 --link="spawning-pool:db" phpmyadmin/phpmyadmin
-
-# for check ---> open "http://$(docker-machine ip Char):8081"
